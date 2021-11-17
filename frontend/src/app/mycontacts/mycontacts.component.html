@@ -1,0 +1,9 @@
+<ng-container *ngIf="showTitle">
+    <app-form-title [titulo]="titulo" [addButtonText]="textoboton" [showAddButton]="mostrarboton" (addEvent)="onAddProp($event)" ></app-form-title>
+</ng-container>
+<ng-container *ngIf="showTable">
+    <app-contact-table [tipo]="tipotabla" (editEvent)="onEditProp($event)" (viewEvent)="onViewProp($event)"></app-contact-table>
+</ng-container>
+<ng-container *ngIf="showForm">
+    <app-contact-form [contacto]="contactoSel" [operacion]="tipoOperacion" (returnEvent)="onReturn($event)"></app-contact-form>
+</ng-container>

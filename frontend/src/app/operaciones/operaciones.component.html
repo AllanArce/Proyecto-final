@@ -1,0 +1,21 @@
+<ng-container *ngIf="showTitle">
+    <app-form-title [titulo]="titulo" [addButtonText]="textoboton" [showAddButton]="mostrarboton" ></app-form-title>
+</ng-container>
+<ng-container *ngIf="showTable">
+    <app-contract-table [tipo]="tipotabla" (selectEvent)="onSelProp($event)"></app-contract-table>
+</ng-container>
+<ng-container *ngIf="showFormRenewal">
+    <app-renewal-form [contrato]="contratoSel"></app-renewal-form>
+</ng-container>
+<ng-container *ngIf="showFormIncrement">
+    <app-increment-form [contrato]="contratoSel"></app-increment-form>
+</ng-container>
+<ng-container *ngIf="showFormCobro">
+    <app-charge-form [contrato]="contratoSel"></app-charge-form>
+</ng-container>
+<ng-container *ngIf="showFormPayment">
+    <app-payment-form [contrato]="contratoSel"></app-payment-form>
+</ng-container>
+<ng-container *ngIf="showReport">
+    <app-report-form [contrato]="contratoSel"></app-report-form>
+</ng-container>

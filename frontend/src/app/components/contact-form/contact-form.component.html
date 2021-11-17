@@ -1,0 +1,110 @@
+<div class="row">
+    
+    <!-- left column -->
+    
+    <div class="{{getClass()}}">
+        <form  [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+            <!-- forma para datos de la propiedad -->
+            <div class="card card-primary">
+                <div class="card-header">
+                <h3 class="card-title">{{this.tituloopr}}</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputNombre">Nombres</label>
+                                <input type="text" maxlength="150" class="form-control" id="inputNombre" placeholder="Nombre del contacto" formControlName="inputNombre"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputNombre.errors }">
+                                <div *ngIf="submitted && f.inputNombre.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputNombre.errors">Debe ingresar el nombre del contacto</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputApellido">Apellidos</label>
+                                <input type="text" maxlength="150" class="form-control" id="inputApellido" placeholder="Apellido del contacto" formControlName="inputApellido"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputApellido.errors }">
+                                <div *ngIf="submitted && f.inputApellido.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputApellido.errors">Debe ingresar el apellido del contacto</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputDPI">Numero de DPI</label>
+                                <input type="text"  class="form-control" id="inputDPI" placeholder="Numero de DPI" formControlName="inputDPI"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputDPI.errors }">
+                                <div *ngIf="submitted && f.inputDPI.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputDPI.errors">Debe ingresar el DPI del contacto</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputTelefono">Telefono</label>
+                                <input type="text" maxlength="150" class="form-control" id="inputTelefono" placeholder="Telefono" formControlName="inputTelefono"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputTelefono.errors }">
+                                <div *ngIf="submitted && f.inputTelefono.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputTelefono.errors">Debe ingresar el telefono del contacto</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input type="text" maxlength="150" class="form-control" id="inputEmail" placeholder="Email" formControlName="inputEmail"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputEmail.errors }">
+                                <div *ngIf="submitted && f.inputEmail.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputEmail.errors">Debe ingresar el correo del contacto</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="inputLugarTrabajo">Lugar de trabajo</label>
+                                <input type="text"  class="form-control" id="inputLugarTrabajo" placeholder="Lugar de trabajo" formControlName="inputLugarTrabajo">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputTelefonoTrabajo">Tel. Trabajo</label>
+                                <input type="text"  class="form-control" id="inputTelefonoTrabajo" placeholder="Telefono trabajo" formControlName="inputTelefonoTrabajo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="inputDireccionTrabajo">Direccion de trabajo</label>
+                                <input type="text"  class="form-control" id="inputDireccionTrabajo" placeholder="Direccion trabajo" formControlName="inputDireccionTrabajo">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-end">
+                        <button *ngIf="!isView" type="submit" class="btn btn-success">Aceptar</button>
+                        <button (click)="closeForm()" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </form>
+    </div>
+    
+  </div>
+  <!-- /.row -->
+

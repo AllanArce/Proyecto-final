@@ -1,0 +1,181 @@
+<div class="row">
+    
+    <!-- left column -->
+    
+    <div class="{{getClass()}}">
+        <form  [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+            <!-- forma para datos de la propiedad -->
+            <div class="card card-primary">
+                <div class="card-header">
+                <h3 class="card-title">{{this.tituloopr}}</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="txtnombre">propiedad</label>
+                                <input type="text"  class="form-control" id="txtNombre" placeholder="Nombre de la propiedad" formControlName="inputNombrePropiedad">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="txtDireccion">Direccion</label>
+                                <input type="text"  class="form-control" id="txtDireccion" placeholder="Nombre de la propiedad" formControlName="inputDireccionPropiedad">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Inquilino:</label>
+                                <select id="selectInquilino" class="select2 form-control" formControlName="selectInquilino"
+                                [ngClass]="{ 'is-invalid': submitted && f.selectInquilino.errors }">
+                                    <option *ngFor="let contacto of contactos" value={{contacto.idcontacto}}>{{contacto.nombre + ' ' + contacto.apellido}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.selectInquilino.errors" class="invalid-feedback">
+                                    <div *ngIf="f.selectInquilino.errors.required">Seleccione un inquilino</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Fiador:</label>
+                                <select id="selectFiador" class="select2 form-control" formControlName="selectFiador"
+                                [ngClass]="{ 'is-invalid': submitted && f.selectFiador.errors }">
+                                    <option *ngFor="let contacto of contactos" value={{contacto.idcontacto}}>{{contacto.nombre + ' ' + contacto.apellido}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.selectFiador.errors" class="invalid-feedback">
+                                    <div *ngIf="f.selectFiador.errors.required">Seleccione un fiador</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputDuracion">Duracion (meses)</label>
+                                <input type="number" min="0"  class="form-control" id="inputDuracion" placeholder="Durarcion (meses)" formControlName="inputDuracion"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputDuracion.errors }">
+                                <div *ngIf="submitted && f.inputDuracion.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputDuracion.errors.required">Ingrese una duracion</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputFechaInicio">Fecha Inicio</label>
+                                <input type="date" min="0"  class="form-control" id="inputFechaInicio" placeholder="Zona" formControlName="inputFechaInicio"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputFechaInicio.errors }">
+                                <div *ngIf="submitted && f.inputFechaInicio.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputFechaInicio.errors.required">Ingrese una fecha de inicio</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputFechaFin">Fecha Final</label>
+                                <input type="date"  class="form-control" id="inputFechaFin" placeholder="Zona" formControlName="inputFechaFin"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputFechaFin.errors }">
+                                <div *ngIf="submitted && f.inputFechaFin.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputFechaFin.errors.required">Ingrese una fecha final</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputPrecioInicio">Precio Inicial</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">Q.</span>
+                                    </div>
+                                    <input type="number" min="0" increment="0.01"  class="form-control" id="inputPrecioInicio" placeholder="0.00" formControlName="inputPrecioInicio"
+                                    [ngClass]="{ 'is-invalid': submitted && f.inputPrecioInicio.errors }">
+                                <div *ngIf="submitted && f.inputPrecioInicio.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputPrecioInicio.errors.required">Ingrese el precio inicial</div>
+                                </div>
+                                  </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputPrecioContrato">Precio Actual</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">Q.</span>
+                                    </div>
+                                    <input type="number" min="0" increment="0.01"  class="form-control" id="inputPrecioContrato" placeholder="0.00" formControlName="inputPrecioContrato"
+                                    [ngClass]="{ 'is-invalid': submitted && f.inputPrecioContrato.errors }">
+                                <div *ngIf="submitted && f.inputPrecioContrato.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputPrecioContrato.errors.required">Ingrese el precio actual</div>
+                                </div>
+                                  </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputDeposito">Deposito</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">Q.</span>
+                                    </div>
+                                    <input type="number" min="0" increment="0.01"  class="form-control" id="inputDeposito" placeholder="0.00" formControlName="inputDeposito"
+                                    [ngClass]="{ 'is-invalid': submitted && f.inputDeposito.errors }">
+                                <div *ngIf="submitted && f.inputDeposito.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputDeposito.errors.required">Ingrese el valor del deposito</div>
+                                </div>
+                                  </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="inputAbogado">Abogado</label>
+                                <input type="text"  class="form-control" id="inputAbogado" placeholder="Nombre del abogado" formControlName="inputAbogado"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputAbogado.errors }">
+                                <div *ngIf="submitted && f.inputAbogado.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputAbogado.errors.required">Ingrese el nombre del abogado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="custom-control custom-switch mt-4">
+                                <input type="checkbox" class="custom-control-input cursor-pointer" id="checkVigente" formControlName="checkVigente">
+                                <label class="custom-control-label cursor-pointer" for="checkVigente">Vigente</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-end">
+                        <button *ngIf="!isView" type="submit" class="btn btn-success">Aceptar</button>
+                        <button (click)="closeForm()" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </form>
+    </div>
+    <!--/.col (left) -->
+    <ng-container *ngIf="!isAdd">
+        <!-- right column -->
+        <div class="col-md-3">
+        <!-- Form Element sizes -->
+        <app-contract-files [idcontrato]="contrato.idcontrato" [operacion]="operacion" [lista]="archivos" (newFileEvent)="actualizaArchivos($event)"></app-contract-files>
+        <!-- /.card -->
+        </div>
+        <!--/.col (right) -->
+    </ng-container>
+  </div>
+  <!-- /.row -->

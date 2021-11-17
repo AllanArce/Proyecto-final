@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+.cursor-pointer
+{
+  cursor: pointer;
+}
+
+.full-bg-1
+{
+  /* The image used */
+  background-image: url("assets/img/bglogin.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.full-bg-2
+{
+  /* The image used */
+  background-image: url("assets/img/bgregister.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

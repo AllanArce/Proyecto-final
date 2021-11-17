@@ -1,0 +1,140 @@
+<div class="row">
+    
+    <!-- left column -->
+    
+    <div class="col-md-12">
+        <form  [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+            <!-- forma para datos de la propiedad -->
+            <div class="card card-primary">
+                <div class="card-header">
+                <h3 class="card-title">Informacion del contrato</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputNombrePropiedad">Propiedad</label>
+                                <input type="text"  class="form-control" id="inputNombrePropiedad"  formControlName="inputNombrePropiedad">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputInquilino">Inquilino:</label>
+                                <input type="text"  class="form-control" id="inputInquilino"  formControlName="inputInquilino">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputFiador">Fiador:</label>
+                                <input type="text"  class="form-control" id="inputFiador"  formControlName="inputFiador">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="inputFechaInicio">Fecha Inicio</label>
+                                <input type="date" min="0"  class="form-control" id="inputFechaInicio" placeholder="Zona" formControlName="inputFechaInicio"
+                                >
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="inputFechaFin">Fecha Final</label>
+                                <input type="date"  class="form-control" id="inputFechaFin" placeholder="Zona" formControlName="inputFechaFin">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputPrecioInicio">Precio Inicial</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">Q.</span>
+                                    </div>
+                                    <input type="number" min="0" increment="0.01"  class="form-control" id="inputPrecioInicio" placeholder="0.00" formControlName="inputPrecioInicio">
+                                  </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputPrecioContrato">Precio Actual</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">Q.</span>
+                                    </div>
+                                    <input type="number" min="0" increment="0.01"  class="form-control" id="inputPrecioContrato" placeholder="0.00" formControlName="inputPrecioContrato">
+                                  </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputDeposito">Deposito</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">Q.</span>
+                                    </div>
+                                    <input type="number" min="0" increment="0.01"  class="form-control" id="inputDeposito" placeholder="0.00" formControlName="inputDeposito">
+                                  </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <!-- /.card -->
+            <div class="card card-primary">
+                <div class="card-header">
+                <h3 class="card-title">Informacion de la renovacion</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputNuevaDuracion">Nueva duracion</label>
+                                <input type="number" min="0"  class="form-control" id="inputNuevaDuracion" placeholder="Durarcion (meses)" formControlName="inputNuevaDuracion"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputNuevaDuracion.errors }">
+                                <div *ngIf="submitted && f.inputNuevaDuracion.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputNuevaDuracion.errors.required">Ingrese la nueva duracion</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="inputNuevoPrecio">Nuevo Precio</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text">Q.</span>
+                                    </div>
+                                    <input type="number" min="0" increment="0.01"  class="form-control" id="inputNuevoPrecio" placeholder="0.00" formControlName="inputNuevoPrecio"
+                                    [ngClass]="{ 'is-invalid': submitted && f.inputNuevoPrecio.errors }">
+                                <div *ngIf="submitted && f.inputNuevoPrecio.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputNuevoPrecio.errors.required">Ingrese el nuevo precio</div>
+                                </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-end">
+                        <button  type="submit" class="btn btn-success">Aceptar</button>
+                        <button (click)="closeForm()" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+  </div>
+  <!-- /.row -->

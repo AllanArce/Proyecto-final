@@ -1,0 +1,40 @@
+<table style="font-size: small;" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="table table-bordered table-hover table-sm" >
+    <thead>
+        <tr>
+            <ng-container *ngIf="tipo=='select'">
+                <th>Seleccionar</th>
+            </ng-container>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>DPI</th>
+            <th>Trabajo</th>
+            <ng-container *ngIf="tipo=='edit'">
+                <th>Opciones</th>
+            </ng-container>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of contactos">
+            <ng-container *ngIf="tipo=='select'">
+                <td>
+                    <button class="btn btn-success btn-sm" (click)="onSelect(item)" title="Visualizar"><i class="far fa-check-circle"></i> seleccionar</button>
+                </td>
+            </ng-container>
+            <td>{{item.nombre}}</td>
+            <td>{{item.apellido}}</td>
+            <td>{{item.telefono}}</td>
+            <td>{{item.correo_electronico}}</td>
+            <td>{{item.numero_dpi}}</td>
+            <td>{{item.lugar_trabajo}}</td>
+            <ng-container *ngIf="tipo=='edit'">
+                <td>
+                    <button class="btn btn-success" (click)="onView(item)" title="Visualizar">&nbsp;<i class="far fa-eye"></i>&nbsp;</button>&nbsp;
+                    <button class="btn btn-primary" (click)="onEdit(item)" title="Modificar">&nbsp;<i class="fas fa-edit"></i>&nbsp;</button>&nbsp;
+                    <button class="btn btn-danger" (click)="onDelete(item)" title="Eliminar">&nbsp;<i class="far fa-times-circle"></i>&nbsp;</button>
+                </td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>

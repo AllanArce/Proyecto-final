@@ -1,0 +1,9 @@
+<ng-container *ngIf="showTitle">
+    <app-form-title [titulo]="titulo" [addButtonText]="textoboton" [showAddButton]="mostrarboton" ></app-form-title>
+</ng-container>
+<ng-container *ngIf="showTable">
+    <app-property-table [tipo]="tipotabla" (selectEvent)="onSelProp($event)"></app-property-table>
+</ng-container>
+<ng-container *ngIf="showForm">
+    <app-contract-form [propiedad]="propiedadSel" (returnEvent)="onReturn($event)" [operacion]="tipoOperacion"></app-contract-form>
+</ng-container>

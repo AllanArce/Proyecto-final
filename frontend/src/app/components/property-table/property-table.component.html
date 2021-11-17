@@ -1,0 +1,55 @@
+<table style="font-size: small;" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="table table-bordered table-hover table-sm" >
+    <thead>
+        <tr>
+            <ng-container *ngIf="tipo=='select'">
+                <th>Seleccionar</th>
+            </ng-container>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Depto.</th>
+            <th>Municipio</th>
+            <th>Zona</th>
+            <th>Precio</th>
+            <th>Arrendada</th>
+            <th>Publicada</th>
+            <ng-container *ngIf="tipo=='edit'">
+                <th>Opciones</th>
+            </ng-container>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let propiedad of propiedades">
+            <ng-container *ngIf="tipo=='select'">
+                <td>
+                    <button class="btn btn-success btn-sm" (click)="onSelect(propiedad)" title="Visualizar"><i class="far fa-check-circle"></i> seleccionar</button>
+                </td>
+            </ng-container>
+            <td>{{propiedad.nombre_propiedad}}</td>
+            <td>{{propiedad.tipo}}</td>
+            
+            <td>{{propiedad.departamento}}</td>
+            <td>{{propiedad.municipio}}</td>
+            <td>{{propiedad.zona}}</td>
+            <td>Q. {{propiedad.precio | number:'1.2-2'}}</td>
+            <ng-container *ngIf="propiedad.arrendada==1">
+                <td>Si</td>
+            </ng-container>
+            <ng-container *ngIf="propiedad.arrendada==0">
+                <td>No</td>
+            </ng-container>
+            <ng-container *ngIf="propiedad.estatus_publicado==2">
+                <td>Si</td>
+            </ng-container>
+            <ng-container *ngIf="propiedad.estatus_publicado==0">
+                <td>No</td>
+            </ng-container>
+            <ng-container *ngIf="tipo=='edit'">
+                <td>
+                    <button class="btn btn-success" (click)="onView(propiedad)" title="Visualizar">&nbsp;<i class="far fa-eye"></i>&nbsp;</button>&nbsp;
+                    <button class="btn btn-primary" (click)="onEdit(propiedad)" title="Modificar">&nbsp;<i class="fas fa-edit"></i>&nbsp;</button>&nbsp;
+                    <button class="btn btn-danger" (click)="onDelete(propiedad)" title="Eliminar">&nbsp;<i class="far fa-times-circle"></i>&nbsp;</button>
+                </td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>

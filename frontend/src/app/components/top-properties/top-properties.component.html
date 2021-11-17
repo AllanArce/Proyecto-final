@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">{{titulo}}</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="row mt-4" *ngFor="let i of propiedadesPartido">
+            <div class="col-sm-4" *ngFor="let propiedad of propiedades | slice:(i*itemsPerRow):(i+1)*itemsPerRow">
+              <div class="position-relative p-3 bg-gray">
+                  <img src="{{propiedad.imagenurl}}" style="height: 180px;width: 100%;" alt="Photo 1" class="img-fluid">
+                  <div class="ribbon-wrapper ribbon-xl">
+                  <div class="ribbon {{getColor(propiedad)}}">
+                    <small>{{propiedad.tipo}}</small>
+                  </div>
+                </div>
+                <h4>{{propiedad.nombre_propiedad}}</h4>
+                <div class="row">
+                  <div class="col-5"><i class="fas fa-bed"></i>&nbsp;{{propiedad.numero_habitaciones}}&nbsp;habitaciones</div>
+                  <div class="col-7"><i class="fas fa-bath"></i>&nbsp;{{propiedad.numero_banios}}&nbsp;baños</div>
+                </div>
+                <div class="row">
+                  <div class="col-5"><i class="fas fa-car"></i>&nbsp;{{propiedad.parqueos}}&nbsp;parqueos</div>
+                  <div class="col-7"><i class="fas fa-vector-square"></i>&nbsp;{{propiedad.area_total}}&nbsp;mts. cuadrados</div>
+                </div>
+                <div class="row">
+                    <div class="col-12"><i class="fas fa-map-marker-alt"></i>&nbsp;{{propiedad.departamento}},&nbsp;{{propiedad.municipio}},&nbsp;zona&nbsp;{{propiedad.zona}}</div>
+                </div>
+                <div class="row">
+                <div class="col-6"><h4>Q. {{propiedad.precio | number:'1.2-2'}}</h4></div>
+                <div class="col-6">
+                  <button type="button" (click)="clickPropiedad(propiedad)" class="btn bg-gradient-warning"><i class="fas fa-info-circle"></i> Mas informacion</button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->

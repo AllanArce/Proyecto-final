@@ -1,0 +1,204 @@
+<!-- Site wrapper -->
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+      </ul>
+  
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-comments"></i>
+            <ng-container *ngIf="mensajes.length>0">
+              <span class="badge badge-danger navbar-badge">{{mensajes.length}}</span>
+            </ng-container>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <ng-container *ngFor="let msj of mensajes; let i = index">
+              <div *ngIf="i>1" class="dropdown-divider"></div>
+              
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      {{msj.remitente}}
+                      <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                    </h3>
+                    <p class="text-sm">{{msj.asunto}}</p>
+                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> {{msj.fecha}}</p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+            </ng-container>
+
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">Ver todos los mensajes</a>
+          </div>
+        </li>
+        <!-- User Menu -->
+        <li class="nav-item dropdown user-menu">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <img src="../../assets/img/user.png" class="user-image img-circle elevation-2" alt="User Image">
+            <span class="d-none d-md-inline">{{nombreUsuario}}</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <!-- User image -->
+            <li class="user-header bg-primary">
+              <img src="../../assets/img/user.png" class="img-circle elevation-2" alt="User Image">
+  
+              <p>
+                {{nombreUsuario}}
+                <small>Usuario desde registrado.</small>
+              </p>
+            </li>
+            
+            <!-- Menu Footer-->
+            <li class="user-footer">
+              <a href="#" class="btn btn-default btn-flat">Perfil</a>
+              <a (click)="onLogout()" class="btn btn-default btn-flat float-right">Salir</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+  
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a routerLink="/home/landing" class="brand-link">
+        <img src="../../assets/img/logobw.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Administración</span>
+      </a>
+  
+      <!-- Sidebar -->
+      <div class="sidebar">
+          
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+              <li class="nav-header">Opciones</li>
+              <li class="nav-item">
+                <a routerLink="contacts" class="nav-link">
+                  <i class="fa fa-users fa-lg"></i>
+                  <p>
+                    Contactos
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="properties" class="nav-link">
+                  <i class="far fa-building fa-lg"></i>
+                  <p>
+                    Propiedades
+                  </p>
+                </a>
+              </li>
+  
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-file-contract fa-lg"></i>
+                  <p>
+                    Contratos
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a routerLink="newcontract" class="nav-link">
+                      <i class="fas fa-plus nav-icon"></i>
+                      <p>Nuevo Contrato</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a routerLink="contract" class="nav-link">
+                      <i class="fas fa-edit nav-icon"></i>
+                      <p>Modificar Contrato</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a (click)="ruta1()" class="nav-link cursor-pointer">
+                      <i class="fas  fa-file-signature nav-icon"></i>
+                      <p>Renovaciones</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a (click)="ruta2()" class="nav-link cursor-pointer">
+                      <i class="fas fa-dollar-sign nav-icon"></i>
+                      <p>Aumento de alquiler</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+  
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-file-invoice-dollar fa-lg"></i>
+                  <p>
+                    Cuentas por Cobrar
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a (click)="ruta3()" class="nav-link cursor-pointer">
+                      <i class="fas fa-money-check-alt nav-icon"></i>
+                      <p>Nuevo Cobro</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a (click)="ruta4()" class="nav-link cursor-pointer">
+                      <i class="far fa-check-square nav-icon"></i>
+                      <p>Registrar Pago</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a (click)="ruta5()" class="nav-link cursor-pointer">
+                      <i class="fas fa-file-invoice nav-icon"></i>
+                      <p>Estado de Cuenta</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a routerLink="canceldoc" class="nav-link">
+                      <i class="fas fa-times-circle nav-icon"></i>
+                      <p>Anular documento</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+  
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
+        </div>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+  
+    <app-footer></app-footer>
+
+  </div>
+  <!-- ./wrapper -->

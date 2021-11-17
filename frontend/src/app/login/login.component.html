@@ -1,0 +1,62 @@
+<div class="login-box">
+    
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <div class="login-logo">
+          <img src="../../assets/img/logo4.png" alt="Realty GT Logo" class="brand-image img-circle elevation-3">
+          <p><b>Inicio de Sesion</b></p>
+        </div>
+        <p class="login-box-msg">Ingrese sus credenciales para continuar</p>
+  
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" autocomplete="off" placeholder="Email" formControlName="user">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" autocomplete="off" placeholder="Password" formControlName="password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8 ">
+              <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-check-circle"></i> Ingresar</button>
+            </div>
+            <div class="col-2">
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8 ">
+              <a routerLink="../landing" class="btn btn-success btn-block"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
+            </div>
+            <div class="col-2">
+            </div>
+          </div>
+        </form>
+        <!--
+        <p class="mb-1">
+          <a href="forgot-password.html">Olvide mi contraseña</a>
+        </p>
+        -->
+        <p class="mb-0">
+          <a routerLink="../register" class="text-center"><i class="fas fa-user"></i> Registrar nuevo usuario</a>
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+  <!-- /.login-box -->
+

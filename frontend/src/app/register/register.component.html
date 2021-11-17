@@ -1,0 +1,77 @@
+<div class="register-box">
+    
+  
+    <div class="card">
+      <div class="card-body register-card-body">
+        <div class="register-logo">
+          <p><b>Registro de Usuario</b></p>
+        </div>
+        <p class="login-box-msg">Ingrese la informacion del nuevo usuario</p>
+  
+        <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" formControlName="name" placeholder="Nombre completo">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" formControlName="user" placeholder="Email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" formControlName="password2" placeholder="Comfirme password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              
+            </div>
+            <!-- /.col -->
+            <div class="col-8">
+              <button  class="btn btn-primary btn-block"><i class="fas fa-check-circle"></i> Registrar</button>
+            </div>
+            <!-- /.col -->
+            <div class="col-2">
+              
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8 ">
+              <a routerLink="../landing" class="btn btn-success btn-block"><i class="fas fa-arrow-circle-left"></i> Regresar</a>
+            </div>
+            <div class="col-2">
+            </div>
+          </div>
+        </form>
+  
+        <br/>
+  
+        <a routerLink="../login" class="text-center"><i class="fas fa-user"></i> Ya soy usuario del sitio</a>
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+  <!-- /.register-box -->
+

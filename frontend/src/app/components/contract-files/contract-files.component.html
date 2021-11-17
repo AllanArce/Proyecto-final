@@ -1,0 +1,61 @@
+<ng-container *ngIf="operacion!='view'">
+    <div class="form-group">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile" (change)="selectFile($event)">
+        <label class="custom-file-label" for="customFile">Seleccionar</label>
+      </div>
+      <div class="input-group-append">
+        <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">Subir</button>
+        &nbsp;&nbsp;&nbsp;<button class="btn btn-primary btn-sm" [disabled]="selectedFiles" (click)="onSaveFile()"><i class="fas fa-sync-alt"></i></button>
+      </div>
+      <div *ngIf="currentFileUpload" class="progress mt-2">
+        <div
+          class="progress-bar progress-bar-info"
+          role="progressbar"
+          attr.aria-valuenow="{{ percentage }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [ngStyle]="{ width: percentage + '%' }"
+        >
+          {{ percentage }}%
+        </div>
+      </div>
+    </div>
+    </ng-container>
+      
+      
+    <div class="card card-success">
+        <div class="card-header">
+          <h3 class="card-title">Archivos del contrato</h3>
+        </div>
+        <div class="card-body">
+            <table style="font-size: small;" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="table table-hover table-sm" >
+                <thead>
+                    <tr>
+                        <th>Anotacion</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let arch of lista">
+                        <td>{{arch.anotacion}}</td>
+                        <td><a class="btn btn-primary btn-sm" href="{{arch.url}}" target="_blank"><i class="fas fa-paperclip"></i></a>
+                        <ng-container *ngIf="operacion!='view'">
+                                <button class="btn btn-danger btn-sm" (click)="onDelete(arch)" title="Eliminar"><i class="far fa-times-circle"></i></button>
+                        </ng-container>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+    
+    
+    <div class="row">
+        <div class="col-md-12">
+            
+        </div>
+    </div>
+    
+    

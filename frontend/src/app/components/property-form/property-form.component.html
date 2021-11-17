@@ -1,0 +1,244 @@
+<div class="row">
+    
+    <!-- left column -->
+    
+    <div class="{{getClass()}}">
+        <form  [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+            <!-- forma para datos de la propiedad -->
+            <div class="card card-primary">
+                <div class="card-header">
+                <h3 class="card-title">{{this.tituloopr}}</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="txtnombre">Nombre</label>
+                                <input type="text" maxlength="150" class="form-control" id="txtNombre" placeholder="Nombre de la propiedad" formControlName="inputNombre"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputNombre.errors }">
+                                <div *ngIf="submitted && f.inputNombre.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputNombre.errors">Debe ingresar el nombre o el valor es muy largo</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Tipo:</label>
+                                <select id="selectTipo" class="select2 form-control"  formControlName="selectTipo"
+                                [ngClass]="{ 'is-invalid': submitted && f.selectTipo.errors }">
+                                    <option value="1" >Apartamento</option>
+                                    <option value="2" >Casa</option>
+                                    <option value="6" >Edificio</option>
+                                    <option value="4" >Local comercial</option>
+                                    <option value="5" >Lote</option>
+                                    <option value="3" >Oficina</option>
+                                </select>
+                                <div *ngIf="submitted && f.selectTipo.errors" class="invalid-feedback">
+                                    <div *ngIf="f.selectTipo.errors.required">Seleccione el tipo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="txtDescripcion">Descripcion</label>
+                                    <textarea maxlength="4000" class="form-control" id="txtDescripcion" rows="3" placeholder="Descripcion de la propiedad" formControlName="inputDescripcion"
+                                    [ngClass]="{ 'is-invalid': submitted && f.inputDescripcion.errors }"></textarea>
+                                    <div *ngIf="submitted && f.inputDescripcion.errors" class="invalid-feedback">
+                                        <div *ngIf="f.inputDescripcion.errors.required">Debe ingresar la descripcion de la propiedad</div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txtDireccion">Direccion</label>
+                                <input type="text" maxlength="150" class="form-control" id="txtDireccion" placeholder="Direccion de la propiedad" formControlName="inputDireccion"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputDireccion.errors }">
+                                <div *ngIf="submitted && f.inputDireccion.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputDireccion.errors.required">Debe ingresar la direccion (sin zona ni departamento)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Departamento:</label>
+                                <select id="selectDepto" class="select2 form-control" (change)="onSelDepto()" formControlName="selectDepto"
+                                [ngClass]="{ 'is-invalid': submitted && f.selectDepto.errors }">
+                                    <option *ngFor="let itemd of deptos" value={{itemd.id}}>{{itemd.nombre}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.selectDepto.errors" class="invalid-feedback">
+                                    <div *ngIf="f.selectDepto.errors.required">Seleccione un departamento</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Municipio:</label>
+                                <select id="selectMuni" class="select2 form-control"  formControlName="selectMuni"
+                                [ngClass]="{ 'is-invalid': submitted && f.selectMuni.errors }">
+                                    <option *ngFor="let itemm of munis" value={{itemm.id}}>{{itemm.nombre}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.selectMuni.errors" class="invalid-feedback">
+                                    <div *ngIf="f.selectMuni.errors.required">Seleccione un municipio</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtZona">Zona</label>
+                                <input type="number" min="0" max="30" class="form-control" id="txtZona" placeholder="Zona" formControlName="inputZona"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputZona.errors }">
+                                <div *ngIf="submitted && f.inputZona.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputZona.errors.required">Ingrese una zona</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txtArea">Area</label>
+                                <input type="number" min="0"  class="form-control" id="txtArea" placeholder="Area" formControlName="inputArea"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputArea.errors }">
+                                <div *ngIf="submitted && f.inputArea.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputArea.errors.required">Valor incorrecto</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="txtHabitaciones">Habitaciones</label>
+                                <input type="number" min="0"  class="form-control" id="txtHabitaciones" placeholder="Habitaciones" formControlName="inputHabitaciones"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputHabitaciones.errors }">
+                                <div *ngIf="submitted && f.inputHabitaciones.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputHabitaciones.errors.required">Valor incorrecto</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="txtBanios">Baños</label>
+                                <input type="number" min="0"  class="form-control" id="txtBanios" placeholder="Baños" formControlName="inputBanios"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputBanios.errors }">
+                                <div *ngIf="submitted && f.inputBanios.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputBanios.errors.required">Valor incorrecto</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="txtParqueos">Parqueos</label>
+                                <input type="number" min="0"  class="form-control" id="txtParqueos" placeholder="Parqueos" formControlName="inputParqueos"
+                                [ngClass]="{ 'is-invalid': submitted && f.inputParqueos.errors }">
+                                <div *ngIf="submitted && f.inputParqueos.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputParqueos.errors.required">Valor incorrecto</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="txtPrecio">Precio</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">Q.</span>
+                                    </div>
+                                    <input type="number" min="0" increment="0.01"  class="form-control" id="txtPrecio" placeholder="0.00" formControlName="inputPrecio"
+                                    [ngClass]="{ 'is-invalid': submitted && f.inputPrecio.errors }">
+                                <div *ngIf="submitted && f.inputPrecio.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputPrecio.errors.required">Ingrese el precio</div>
+                                </div>
+                                  </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="custom-control custom-switch mt-4">
+                                <input type="checkbox" class="custom-control-input cursor-pointer" id="checkArrendado" formControlName="checkArrendado">
+                                <label class="custom-control-label cursor-pointer" for="checkArrendado">Arrendado</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="custom-control custom-switch mt-4" >
+                                <input type="checkbox" class="custom-control-input cursor-pointer"  id="checkPublicado" formControlName="checkPublicado">
+                                <label class="custom-control-label cursor-pointer" for="checkPublicado">Publicado</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Imagen:</label>
+                                <select id="selectImagen" class="select2 form-control"  formControlName="selectImagen">
+                                    <option value="0" >Seleccione</option>
+                                    <option *ngFor="let img of imagenes" value={{img.idimagen}}>{{img.anotacion}}</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="txtTelefono">Teléfono(s) de contacto</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="fas fa-phone-square-alt"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="txtTelefono" placeholder="Telefono" formControlName="inputTelefono"
+                                    [ngClass]="{ 'is-invalid': submitted && f.inputTelefono.errors }">
+                                <div *ngIf="submitted && f.inputTelefono.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputTelefono.errors.required">Ingrese el telefono del contacto</div>
+                                </div>
+                                  </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label for="txtEmail">Email de contacto</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                    </div>
+                                    <input type="email"class="form-control" id="txtEmail" placeholder="Email" formControlName="inputEmail"
+                                    [ngClass]="{ 'is-invalid': submitted && f.inputEmail.errors }">
+                                <div *ngIf="submitted && f.inputEmail.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inputEmail.errors">Ingrese un email valido para el contacto</div>
+                                </div>
+                                  </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-end">
+                        <button *ngIf="!isView" type="submit" class="btn btn-success">Aceptar</button>
+                        <button (click)="closeForm()" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </form>
+    </div>
+    <!--/.col (left) -->
+    <ng-container *ngIf="!isAdd">
+        <!-- right column -->
+        <div class="col-md-3">
+        <!-- Form Element sizes -->
+        <app-property-images [idpropiedad]="propiedad.idpropiedad" [operacion]="operacion" [lista]="imagenes" (newFileEvent)="actualizaImagenes($event)" ></app-property-images>
+        <!-- /.card -->
+        </div>
+        <!--/.col (right) -->
+    </ng-container>
+  </div>
+  <!-- /.row -->

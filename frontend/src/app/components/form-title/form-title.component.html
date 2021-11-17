@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-center">
+    <h1>{{titulo}}</h1>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ng-container *ngIf="showAddButton">
+            <button (click)="onAddItem()" class="btn btn-info"><i class="fas fa-plus-circle"></i> {{addButtonText}}</button>
+        </ng-container>
+    </div>
+</div>
